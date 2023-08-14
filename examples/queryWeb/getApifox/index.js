@@ -23,10 +23,10 @@ import { HumanMessage, AIMessage } from 'langchain/schema';
  * @date 2023-08-10
  */
 const genStart = async userInput => {
-  const formatContent = await getHtml(userInput);
-  // const loader = new TextLoader('mock/announceHtml.txt');
-  // const docs = await loader.load();
-  // const formatContent = docs[0].pageContent;
+  // const formatContent = await getHtml(userInput);
+  const loader = new TextLoader('mock/announceHtml.txt');
+  const docs = await loader.load();
+  const formatContent = docs[0].pageContent;
   await writeFile('output/logs/genApifox/格式化后的html.txt', formatContent);
   const model = new OpenAIChat(defaultConfig);
   const pastMessages = [];
@@ -38,7 +38,7 @@ const genStart = async userInput => {
     llm: model,
     verbose: true,
   });
-  await genTyping(chain);
+  await genTyping(chain, formatContent);
   await genApi(chain);
 };
 
