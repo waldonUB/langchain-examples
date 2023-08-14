@@ -19,11 +19,10 @@ export const AZURE_EMBEDDING_DEPLOYMENT_NAME = 'xxx';
 export const AZURE_VERSION = 'xxx';
 
 export const defaultConfig = {
-  // openAIApiKey: OPENAI_API_KEY,
-  azureOpenAIApiKey: AZURE_API_KEY, // In Node.js defaults to process.env.AZURE_OPENAI_API_KEY
-  azureOpenAIApiInstanceName: AZURE_INSTANCE_NAME, // In Node.js defaults to process.env.AZURE_OPENAI_API_INSTANCE_NAME
-  azureOpenAIApiDeploymentName: AZURE_DEPLOYMENT_16K_NAME, // In Node.js defaults to process.env.AZURE_OPENAI_API_DEPLOYMENT_NAME
-  azureOpenAIApiVersion: AZURE_VERSION, // In Node.js defaults to process.env.AZURE_OPENAI_API_VERSION
+  openAIApiKey: OPENAI_API_KEY,
+  // azureOpenAIApiKey: AZURE_API_KEY, // In Node.js defaults to process.env.AZURE_OPENAI_API_KEY
+  // azureOpenAIApiInstanceName: AZURE_INSTANCE_NAME, // In Node.js defaults to process.env.AZURE_OPENAI_API_INSTANCE_NAME
+  // azureOpenAIApiVersion: AZURE_VERSION, // In Node.js defaults to process.env.AZURE_OPENAI_API_VERSION
   temperature: 0, // 必须是0，保证生成的稳定性
   modelName: 'gpt-3.5-turbo', // 视具体情况使用'text-davinci-003'
   maxTokens: 4096, // -1不限制token数量

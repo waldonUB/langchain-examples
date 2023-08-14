@@ -1,0 +1,2 @@
+新增公告 POST /api/waldon/test-announce/add 请求参数 Body 参数  (application/json)  announce_type string  <string> 公告类型 必需 is_top integer  必需 announce_content string  <string> 公告内容 可选 publish_time string  <gtime.Time> 发布时间 可选 示例  {  "announce_type" : "string" ,  "is_top" : 0 ,  "announce_content" : "string" ,  "publish_time" : "string" } 返回响应 成功 (200) HTTP 状态码 : 200 内容格式 : JSON 数据结构  id integer  <int64> 公告主键id 可选 示例  {  "id" : 0 }  
+ 

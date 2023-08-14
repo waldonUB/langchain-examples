@@ -24,7 +24,7 @@ import { HumanMessage, AIMessage } from 'langchain/schema';
  */
 const genStart = async userInput => {
   const formatContent = await getHtml(userInput);
-  // const loader = new TextLoader('mock/yapi_announce.txt');
+  // const loader = new TextLoader('mock/announceHtml.txt');
   // const docs = await loader.load();
   // const formatContent = docs[0].pageContent;
   await writeFile('output/logs/genApifox/格式化后的html.txt', formatContent);
@@ -38,8 +38,8 @@ const genStart = async userInput => {
     llm: model,
     verbose: true,
   });
-  // await genTyping(chain, formatContent);
-  // await genApi(chain, formatContent);
+  await genTyping(chain);
+  await genApi(chain);
 };
 
 /**

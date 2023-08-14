@@ -8,9 +8,9 @@ import { writeFile } from '../../../src/utils/common.js';
  */
 export const genApi = async chain => {
   const resImport = await genImportPrompt(chain);
-  await writeFile('output/logs/genYapi/importType.txt', resImport.response);
+  await writeFile('output/logs/genApifox/importType.txt', resImport.response);
   const resApi = await genApiPrompt(chain);
-  await writeFile('output/logs/genYapi/api模板生成代码.txt', resApi.response);
+  await writeFile('output/logs/genApifox/api模板生成代码.txt', resApi.response);
   const IMPORT_OUTPUT = `\n// utils \nimport request from '@/utils/request';\n`;
   await writeFile('output/api/index.ts', resImport.response + IMPORT_OUTPUT + resApi.response);
 };

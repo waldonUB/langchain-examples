@@ -8,7 +8,7 @@ import { writeFile } from '../../../src/utils/common.js';
  */
 export const genTyping = async (chain, formatContent) => {
   const resA = await genTypingPrompt(chain, formatContent);
-  await writeFile('output/logs/genYapi/类型声明模板生成代码.txt', resA.response);
+  await writeFile('output/logs/genApifox/类型声明模板生成代码.txt', resA.response);
   await writeFile('output/api/typing.ts', resA.response);
 };
 
