@@ -23,10 +23,10 @@ import { HumanMessage, AIMessage } from 'langchain/schema';
  * @date 2023-08-10
  */
 const genStart = async userInput => {
-  // const formatContent = await getHtml(userInput);
-  const loader = new TextLoader('mock/announceHtml.txt');
-  const docs = await loader.load();
-  const formatContent = docs[0].pageContent;
+  const formatContent = await getHtml(userInput);
+  // const loader = new TextLoader('mock/announceHtml.txt');
+  // const docs = await loader.load();
+  // const formatContent = docs[0].pageContent;
   await writeFile('output/logs/genApifox/格式化后的html.txt', formatContent);
   const model = new OpenAIChat(defaultConfig);
   const pastMessages = [];
@@ -59,25 +59,18 @@ const getHtml = async userInput => {
   await page.tap('.ui-input-borderless');
   await page.type('.ui-input-borderless', userInput);
   const length = await page.$eval('.ui-tree-list-holder-inner', async elements => {
-    const childElements = elements.querySelectorAll('.ui-tree-treenode');
+    const childElements = elements.querySelectorAll('.container___3lOB5');
     for (const [index, childElement] of childElements.entries()) {
-      // 不设置目录
-      if (index === 0) {
-        continue;
-      }
-      childElement.setAttribute('id', `ui-tree-treenode-child-${index}`);
+      childElement.setAttribute('id', `container___3lOB5-child-${index}`);
     }
     return childElements.length;
   });
   for (let i = 0; i < length; i++) {
-    if (i === 0) {
-      continue;
-    }
-    await page.tap(`#ui-tree-treenode-child-${i}`);
+    await page.tap(`#container___3lOB5-child-${i}`);
     await new Promise(r => setTimeout(r, 500));
     const htmlContent = await page.content();
     const $ = cheerio.load(htmlContent);
-    const _format = formatHtml($(`#main`));
+    const _format = formatHtml($(`.content___1wjn-`));
     allHtml += _format;
   }
   await browser.close();

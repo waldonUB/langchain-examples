@@ -1,6 +1,3 @@
-import type { AddAnnounceRequest, AddAnnounceResponse, DeleteAnnounceRequest, DeleteAnnounceResponse, UpdateAnnounceRequest, UpdateAnnounceResponse } from './typing.ts';
-// utils 
-import request from '@/utils/request';
 /**
   * 新增公告
   */

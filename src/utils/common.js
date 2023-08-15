@@ -32,6 +32,10 @@ export const formatHtml = nodes => {
       text = text + formatHtml(node.children);
     }
   }
+  text = text.replace(
+    /示例代码 Shell JavaScript Java Swift Go PHP Python HTTP C C# Objective-C Ruby OCaml Dart R /g,
+    '',
+  );
   return text;
 };
 
